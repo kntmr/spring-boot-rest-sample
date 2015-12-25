@@ -1,0 +1,36 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath('org.springframework.boot:spring-boot-gradle-plugin:1.3.0.RELEASE')
+        classpath('org.springframework:springloaded:1.2.4.RELEASE')
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'spring-boot'
+apply plugin: 'idea'
+
+jar {
+    baseName = 'spring-boot-rest-sample'
+    version =  '1.0.0-SNAPSHOT'
+}
+
+idea {
+    module {
+        inheritOutputDirs = false
+        outputDir = file("$buildDir/classes/main/")
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile('org.springframework.boot:spring-boot-starter-web')
+    compile('org.springframework.boot:spring-boot-starter-jdbc')
+    compile('org.postgresql:postgresql:9.4-1206-jdbc42')
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}
